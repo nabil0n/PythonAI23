@@ -1,0 +1,3 @@
+Hej!
+
+Detta är en textfil som vi använder som exempel denna genomgång.
