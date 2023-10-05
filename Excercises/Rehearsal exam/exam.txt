@@ -1,0 +1,157 @@
+Övningstenta - Programmering med Python
+==================================================================
+För G krävs 10 poäng och för VG krävs 15 poäng.
+
+Uppgift 1 (3p)
+Beskriv vad koden gör och vad som skrivs ut:
+1. frukter = ["jordgubbe", "vindruva", "grape"]
+2. godfrukt = frukter[2]
+3. print(godfrukt[-1])
+Skriv en kort kommentar för varje rad.
+
+Svar:
+1. En lista med frukter av datatypen string initieras med variabelnamenet frukter.
+2. Variabeln godfrukt hämtar det tredje och därmed sista värdet i listan frukter, "grape".
+3. print(godfrukt[-1]) kommer att printa ut det sista värdet i strängen som är sparad i
+godfrukt. Alltså sista bokstaven i "grape", så "e".
+
+==================================================================
+
+Uppgift 2 (3p)
+Skriv en funktion som tar in en radie och en höjd som inparametrar och som returnerar volymen
+av en cylinder. Volymen för en cylinder är:
+
+V = πr²h
+
+Låt användaren mata in en radie och en höjd och kör funktionen.
+Tänk på att ta med lämplig felhantering.
+
+Svar:
+def tube_volume(radius, height):
+    return 3.1415*(radius**2)*height
+
+try:
+    tube_volume(float(input("Please input tube radius: ")), float(input("Please input tube height: ")))
+except:
+    print("Please input only numbers.")
+
+================================================================
+
+Uppgift 3 (3p)
+Simulera 1000000 tärningskast och beräkna antalet ettor, tvåor, treor, fyror, femmor och sexor. Spara
+resultatet i en lämplig datastruktur.
+
+Svar:
+import random
+import collections
+
+dice_throws = []
+
+for i in range(1000000):
+    dice_throws.append(random.randint(1, 6))
+
+print(collections.Counter(dice_throws))
+
+ones = 0
+twos = 0
+threes = 0
+fours = 0
+fives = 0
+sixes = 0
+
+for throw in dice_throws:
+    if throw == 1:
+        ones += 1
+    elif throw == 2:
+        twos += 1
+    elif throw == 3:
+        threes += 1
+    elif throw == 4:
+        fours += 1
+    elif throw == 5:
+        fives += 1
+    else:
+        sixes += 1
+
+print(f"ones = {ones}, twos = {twos}, threes = {threes}, fours = {fours}, fives = {fives}, sixes = {sixes})
+
+# Visste att collections fanns, men tog lite hjälp med tillämnning/stavning.
+# Den sparar dock inte resultatet i bra struktur,
+# så tar med en lite "klumpigare" lösning också.
+
+================================================================
+
+Uppgift 4 (3p)
+Skapa en funktion som tar in ett heltal n som parameter och skriver ut mönstret nedan.
+Exempel när n = 5:
+
+x x x x x
+x o x o x
+x x x x x
+x o x o x
+x x x x x
+
+Svar:
+def xo_matrix(n):
+
+
+================================================================
+
+Uppgift 5 (4p)
+Skapa en funktion som tar in en summa pengar.
+Den ska printa ut en representation av sedlar och mynt som representerar summan.
+Exempel 3214 ska ge:
+
+Tusenlapp: 3
+Tvåhundralapp: 1
+Tiokrona: 1
+Enkrona: 4
+
+Svar:
+def money_counter(n):
+    money = {}
+    if n > 999:
+        money["tusenlappar"] += 1
+
+================================================================
+
+Uppgift 6 (4p)
+Du har följande kod:
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return f"Animal {self.name}"
+
+class Dog(Animal):
+# notera att __init__ är nedärvd
+    def __repr__(self):
+        return f"Dog: {self.name}"
+
+class Fish(Animal):
+    def __repr__(self):
+        return f"Fish: {self.name}"
+
+# TO-DO: implementera PetOwner
+class PetOwner:
+...
+
+
+
+# manuell test av PetOwner
+
+
+owner1 = PetOwner("Ada",["Snoopy", "Pluto"], ["Fishy", "Buppy"])
+owner2 = PetOwner("Beda", ["Barkly"] )
+print(owner1)
+print(owner2)
+
+# Implementera PetOwner klassen så att du får liknande utskrift som nedan med det manuella testet.
+
+# Ada owns:
+# [Dog: Snoopy, Dog: Pluto]
+# [Fish: Fishy, Fish: Buppy]
+# Beda owns:
+# [Dog: Barkly]
