@@ -11,7 +11,7 @@ class Circle(Geometry):
         return f"{self.type}: Radius={self.radius} with center position at x={self.x}, y={self.y}"
     
     def __eq__(self, other):
-        return True if self.radius == other.radius else False
+        return self.radius == other.radius
 
     def area(self):
         return pi * self.radius ** 2
@@ -21,3 +21,6 @@ class Circle(Geometry):
 
     def is_unit_circle(self):
         return True if (self.radius == 1 and self.x == 0 == self.y) else False
+    
+    def is_inside(self):
+        return 

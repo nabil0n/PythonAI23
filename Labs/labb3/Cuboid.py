@@ -12,7 +12,7 @@ class Cuboid(Rectangle):
         return f"{self.type}: Center position at (x={self.x}, y={self.y}, z={self.z}), width={self.width}, height={self.height}, depth={self.depth}"
 
     def __eq__(self, other):
-        return True if super().__eq__() and self.depth == other.depth else False
+        return super().__eq__() and self.depth == other.depth
 
     def is_cube(self):
         return self.is_square() and self.depth == self.width

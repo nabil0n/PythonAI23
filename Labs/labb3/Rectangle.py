@@ -13,6 +13,18 @@ class Rectangle(Geometry):
 
     def __eq__(self, other):
         return True if self.width == other.width and self.height == other.height else False
+    
+    def lower_left(self):
+        return self.x - self.width / 2, self.y - self.height / 2
+    
+    def lower_right(self):
+        return self.x + self.width / 2, self.y - self.height / 2
+    
+    def upper_left(self):
+        return self.x - self.width / 2, self.y + self.height / 2
+    
+    def upper_right(self):
+        return self.x + self.width / 2, self.y + self.height / 2
 
     def area(self):
         return self.width * self.height
@@ -22,3 +34,6 @@ class Rectangle(Geometry):
 
     def is_square(self):
         return True if self.width == self.height else False
+    
+    def is_inside(self, x, y):
+        return 
