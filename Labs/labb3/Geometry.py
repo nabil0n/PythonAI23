@@ -2,8 +2,8 @@ class Geometry:
     
     def __init__(self, x, y):
         try:
-            self.x = x
-            self.y = y
+            self.x = float(x)
+            self.y = float(y)
             
         except ValueError:
             print("ValueError: Nothing but numbers are accepted as arguments for any value.")

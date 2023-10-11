@@ -4,9 +4,12 @@ class Sphere(Circle):
     
     def __init__(self, x, y, z, radius):
         super().__init__(x, y, radius)
-        self.z = float(z)
-        self.type = "Sphere"
-    
+        try:
+            self.z = float(z)
+            self.type = "Sphere"
+        except ValueError:
+                    print("ValueError: Nothing but numbers are accepted as arguments for any value.")
+
     def __repr__(self):
         return super().__repr__() + f", z={self.z}"
 
