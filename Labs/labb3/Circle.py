@@ -25,6 +25,6 @@ class Circle(Geometry):
     def is_unit_circle(self):
         return True if (self.radius == 1 and self.x == 0 == self.y) else False
     
-    def is_inside(self, x, y):
-        return True if ((x - self.x)**2) + ((y - self.y)**2) <= self.radius**2 else False #https://stackoverflow.com/questions/481144/equation-for-testing-if-a-point-is-inside-a-circle
+    def inside_circle_math(self, x, y):
+        return ((x - self.x)**2) + ((y - self.y)**2) # (Uppdelad för att funka med sphere) https://stackoverflow.com/questions/481144/equation-for-testing-if-a-point-is-inside-a-circle
     

@@ -17,18 +17,6 @@ class Rectangle(Geometry):
     def __eq__(self, other):
         return True if self.width == other.width and self.height == other.height else False
     
-    def lower_left(self):
-        return self.x - self.width / 2, self.y - self.height / 2
-    
-    def lower_right(self):
-        return self.x + self.width / 2, self.y - self.height / 2
-    
-    def top_left(self):
-        return self.x - self.width / 2, self.y + self.height / 2
-    
-    def top_right(self):
-        return self.x + self.width / 2, self.y + self.height / 2
-
     def area(self):
         return self.width * self.height
     
@@ -38,6 +26,25 @@ class Rectangle(Geometry):
     def is_square(self):
         return True if self.width == self.height else False
     
-    def is_inside(self, x, y):
-        return True if x <= self.top_right()[0] and self.top_right()[1] >= y and x >= self.top_left()[0] and self.top_left()[1] >= y and x <= self.lower_right()[0] and self.lower_right()[1] <= y and x >= self.lower_left()[0] and self.lower_left()[1] <= y else False
-        
+    def inside_rectangle_math(self, x, y):
+        return x <= self.top_right()[0] and self.top_right()[1] >= y  and x >= self.bot_left()[0] and self.bot_left()[1] <= y
+    
+    # SKRIV OM SNYGGARE (och då även såklart inside-matten)
+    def bot_left(self):
+        return self.x - self.width / 2, self.y - self.height / 2
+    
+    def bot_right(self):
+        return self.x + self.width / 2, self.y - self.height / 2
+    
+    def top_left(self):
+        return self.x - self.width / 2, self.y + self.height / 2
+    
+    def top_right(self):
+        return self.x + self.width / 2, self.y + self.height / 2
+    
+    #FUNKAR EJ
+    # def get_corners(self):
+    #     self.top_right = self.x + self.width / 2, self.y + self.height / 2
+    #     self.top_left = self.x - self.width / 2, self.y + self.height / 2
+    #     self.bot_right = self.x + self.width / 2, self.y - self.height / 2
+    #     self.bot_left = self.x - self.width / 2, self.y - self.height / 2
