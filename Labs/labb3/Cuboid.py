@@ -9,7 +9,7 @@ class Cuboid(Rectangle):
             self.depth = float(depth)
             self.type = "Cuboid"
         except ValueError:
-                    print("ValueError: Nothing but numbers are accepted as arguments for any value.")
+                return self.error_message()
 
     def __repr__(self):
         return f"{self.type}: Center position at (x={self.x}, y={self.y}, z={self.z}), width={self.width}, height={self.height}, depth={self.depth}"
@@ -25,17 +25,23 @@ class Cuboid(Rectangle):
     
     def translate(self, x, y, z):
         super().translate(x, y)
-        self.z += z
+        try:
+            self.z += float(z)
+        except ValueError:
+            return self.error_message()
 
-    def get_zcorners(self, x, y, z):
-        pass
+    def top_right_z(self):
+        return super().top_right(), self.z + self.depth / 2
+    
+    def bot_left_z(self):
+        return super().bot_left(), self.z - self.depth / 2
     
     def inside_box_math(self, x, y, z):
-        print("Sorry, no solution for this just yet.")
+        return super().inside_rectangle_math(x,y) and z <= self.top_right_z()[1] and z >= self.bot_left_z()[1]
         
-        # return super().inside_rectangle_math(x,y) and ...
         """
         https://stackoverflow.com/questions/21037241/how-to-determine-a-point-is-inside-or-outside-a-cube
-        Hittade denna som supersnyggt visar korrekta sätt att göra detta, inklusive roterade kuboider osv, men jag fattar det inte riktigt så kanske skippar just denna delen
+        Hittade denna som supersnyggt visar korrekta sätt att göra detta, inklusive roterade kuboider osv,
+        men jag fattar det inte riktigt så kanske skippar just den delen
         """
     

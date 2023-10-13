@@ -6,7 +6,7 @@ class Geometry:
             self.y = float(y)
             
         except ValueError:
-            print("ValueError: Nothing but numbers are accepted as arguments for any value.")
+            return self.error_message()
             
     # def __str__(self):
     #     return f"{self.x}, {self.y}"
@@ -25,6 +25,9 @@ class Geometry:
             return True if self.volume() >= other.volume() or self.volume() >= other.area() else False
         
         return True if self.area() >= other.area() else False
+    
+    def error_message(self):
+        print("ValueError: Nothing but numbers are accepted as arguments for any value.")
 
     def translate(self, x, y):
         self.x += float(x)

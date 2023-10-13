@@ -9,7 +9,7 @@ class Rectangle(Geometry):
             self.height = float(height)
             self.type = "Rectangle"
         except ValueError:
-            print("ValueError: Nothing but numbers are accepted as arguments for any value.")
+            return self.error_message()
     
     def __repr__(self):
         return f"{self.type}: Center position at (x={self.x}, y={self.y}), width={self.width}, height={self.height}"
@@ -27,7 +27,7 @@ class Rectangle(Geometry):
         return True if self.width == self.height else False
     
     def inside_rectangle_math(self, x, y):
-        return x <= self.top_right()[0] and self.top_right()[1] >= y  and x >= self.bot_left()[0] and self.bot_left()[1] <= y
+        return x <= self.top_right()[0] and self.top_right()[1] >= y and x >= self.bot_left()[0] and self.bot_left()[1] <= y
     
     # SKRIV OM SNYGGARE (och då även såklart inside-matten)
     def bot_left(self):

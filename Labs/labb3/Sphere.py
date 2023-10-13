@@ -9,7 +9,7 @@ class Sphere(Circle):
             self.z = float(z)
             self.type = "Sphere"
         except ValueError:
-                    print("ValueError: Nothing but numbers are accepted as arguments for any value.")
+            return self.error_message()
 
     def __repr__(self):
         return super().__repr__() + f", z={self.z}"
@@ -22,7 +22,10 @@ class Sphere(Circle):
     
     def translate(self, x, y, z):
         super().translate(x, y)
-        self.z += float(z)
+        try:
+            self.z += float(z)
+        except ValueError:
+            return self.error_message()
     
     def inside_sphere_math(self, x, y, z):
         return super().inside_circle_math(x,y) + ((z - self.z)**2)
