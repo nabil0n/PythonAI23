@@ -93,6 +93,16 @@ x x x x x
 
 Svar:
 def xo_matrix(n):
+    
+    for j in range(n):
+        for i in range(n):
+            if j % 2 == 0:
+                print("x ", end="")
+            elif j % 2 != 0 and i % 2 == 0:
+                print("x ", end="")
+            else:
+                print("o ", end="")
+        print()
 
 
 ================================================================
@@ -108,10 +118,33 @@ Tiokrona: 1
 Enkrona: 4
 
 Svar:
-def money_counter(n):
-    money = {}
-    if n > 999:
-        money["tusenlappar"] += 1
+def change(n=int):
+    
+    currency = {
+        1000: ["Tusenlapp: ", 0],
+        500: ["Femhundralapp: ", 0],
+        200: ["Tvåhundralapp: ", 0],
+        100: ["Hundralapp: ", 0],
+        50: ["Femtiolapp: ", 0],
+        20: ["Tjugolapp: ", 0],
+        10: ["Tia: ", 0],
+        5: ["Femkrona: ", 0],
+        2: ["Tvåkrona: ", 0],
+        1: ["Enkrona: ", 0],
+    }
+    
+    while n != 0:
+        for key, value in currency.items():
+            while n - key >= 0:
+                n -= key
+                currency[key][1] += 1
+                #print(f"added 1 to {value}")
+
+    result = []
+    for value in currency.values():
+        if value[-1] != 0:
+            result.append(value)
+    return result
 
 ================================================================
 
@@ -136,7 +169,14 @@ class Fish(Animal):
 
 # TO-DO: implementera PetOwner
 class PetOwner:
-...
+
+    def __init__(self, name, Dog=[], Fish=[]):
+        self.name = name
+        self.Dog = Dog
+        self.Fish = Fish
+
+    def __repr__(self):
+        return f"{self.name} owns: \n{self.Dog if self.Fish else ''}\n{self.Fish if self.Fish else ''}"
 
 
 
