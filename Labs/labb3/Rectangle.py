@@ -33,14 +33,18 @@ class Rectangle(Geometry):
     def bot_left(self):
         return self.x - self.width / 2, self.y - self.height / 2
     
+    def top_right(self):
+        return self.x + self.width / 2, self.y + self.height / 2
+    
+    """
+    Behövs ej
+    
     def bot_right(self):
         return self.x + self.width / 2, self.y - self.height / 2
     
     def top_left(self):
         return self.x - self.width / 2, self.y + self.height / 2
-    
-    def top_right(self):
-        return self.x + self.width / 2, self.y + self.height / 2
+    """
     
     #FUNKAR EJ
     # def get_corners(self):

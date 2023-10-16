@@ -5,29 +5,74 @@ from Cuboid import Cuboid
 from Sphere import Sphere
 
 import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+from itertools import product, combinations
 from random import choice
 
-COLORS = ["red", "green", "blue", "yellow", "orange", "purple", "pink", "brown", "black"]
+COLORS = ["red", "green", "blue", "orange", "purple", "pink", "brown", "black"]
 
-fig, ax = plt.subplots()
-
-def rectangle_plotter(x, y, width, height):
-    ax.add_patch(plt.Rectangle((x,y), width, height))
+def plot_in_2d(shape):
     
-    plt.show()
+    plt.axis([-10, 10, -10, 10])
+    plt.axis("equal")
+    
+    if shape.type == "Circle":
+        x = shape.x
+        y = shape.y
+        r = shape.radius
+        
+        plt.gca().add_artist(plt.Circle((x, y), radius = r, color=choice(COLORS)))
+    
+    else:
+        x = shape.x
+        y = shape.y
+        width = shape.width
+        height = shape.height
+        
+        plt.gca().add_artist(plt.Rectangle((x,y), width, height, color=choice(COLORS)))
 
-def circle_plotter(x,y,r):
-    plt.figure(figsize=((r-1),(r+1)))
-    ax.add_patch(plt.Circle((x, y), radius = r, color=choice(COLORS)))
+r1 = Rectangle(3, 3, 3, 3)
+r2 = Rectangle(-3, 3, 2, 2)
+c1 = Circle(3, -3, 3)
+c2 = Circle(-3, -3, 2)
 
-    plt.show()
+sph1 = Sphere(0.5, 0.5, 0.5, 0.5)
+box1 = Cuboid(0.5, 0.5, 0.5, 1, 1, 1)
 
-c1 = Circle(0.5, 0.5, 0.2)
-c2 = Circle(-0.5, -0.5, 0.2)
-r1 = Rectangle(0.5, -0.5, 0.4, 0.5)
-r2 = Rectangle(-0.5, 0.5, 0.4, 0.5)
+# plot_in_2d(r1)
+# plot_in_2d(r2)
+# plot_in_2d(c1)
+# plot_in_2d(c2)
 
+# plt.show()
 
-circle_plotter(c1.x, c1.y, c1.radius)
-#circle_plotter(c2.x, c2.y, c2.radius)
-#rectangle_plotter(r1.x, r1.y, r1.width, r1.height)
+#https://www.tutorialspoint.com/plotting-a-3d-cube-a-sphere-and-a-vector-in-matplotlib
+
+# def plot_in_3d(shape):
+    
+#     plt.rcParams["figure.figsize"] = [7.00, 3.50]
+#     plt.rcParams["figure.autolayout"] = True
+#     plt.axis("equal")
+#     fig = plt.figure()
+#     ax = fig.add_subplot(projection='3d')
+    
+#     if shape.type == "Sphere":
+#         r = shape.radius
+#         u, v = np.mgrid[0:2 * np.pi:30j, 0:np.pi:20j]
+#         x = shape.x + (np.cos(u) * np.sin(v))
+#         y = shape.y + (np.sin(u) * np.sin(v))
+#         z = shape.z + (np.cos(v))
+#         ax.plot_surface(x, y, z)
+        
+#     else:
+#         r = [-1, 1]
+#         for s, e in combinations(np.array(list(product(r, r, r))), 2):
+#             if np.sum(np.abs(s-e)) == r[1]-r[0]:
+#                 ax.plot3D(*zip(s, e), color="green")
+#         ax.set_title("Cube")
+
+# plot_in_3d(sph1)
+# plot_in_3d(box1)
+
+# plt.show()

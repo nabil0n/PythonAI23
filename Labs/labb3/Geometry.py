@@ -50,7 +50,7 @@ class Geometry:
     
         """
         Haha, hade vart kul om det nedanför funkade. Hittade en annan lösning, men också sen att Python själv
-        räknade ut att om > overload redan fanns overloads < automatiskt.
+        räknade ut att om > overload redan fanns overloadas < automatiskt.
         
     def __lt__(self, other):
         return False if self.__gt__() else True

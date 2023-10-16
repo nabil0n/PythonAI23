@@ -39,9 +39,9 @@ class Cuboid(Rectangle):
     def inside_box_math(self, x, y, z):
         return super().inside_rectangle_math(x,y) and z <= self.top_right_z()[1] and z >= self.bot_left_z()[1]
         
-        """
+    """
         https://stackoverflow.com/questions/21037241/how-to-determine-a-point-is-inside-or-outside-a-cube
         Hittade denna som supersnyggt visar korrekta sätt att göra detta, inklusive roterade kuboider osv,
         men jag fattar det inte riktigt så kanske skippar just den delen
-        """
+    """
     
