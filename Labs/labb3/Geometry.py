@@ -6,7 +6,7 @@ class Geometry:
             self.y = float(y)
             
         except ValueError:
-            return self.error_message()
+            return self.error_message
             
     # def __str__(self):
     #     return f"{self.x}, {self.y}"
@@ -16,22 +16,30 @@ class Geometry:
     
     def __gt__(self, other):
         if self.type == "Sphere" or self.type == "Cuboid":
-            return True if self.volume() > other.volume() or self.volume() > other.area() else False
+            return True if self.get_volume > other.get_volume or self.get_volume > other.get_area else False
         
-        return True if self.area() > other.area() else False
+        return True if self.get_area > other.get_area else False
     
     def __ge__(self, other):
         if self.type == "Sphere" or self.type == "Cuboid":
-            return True if self.volume() >= other.volume() or self.volume() >= other.area() else False
+            return True if self.get_volume >= other.get_volume or self.get_volume >= other.get_area else False
         
-        return True if self.area() >= other.area() else False
+        return True if self.get_area >= other.get_area else False
     
+    """
+        Python själv räknar ut att om > overload redan fanns overloadas < automatiskt.
+    """
+    
+    @property
     def error_message(self):
         print("ValueError: Nothing but numbers are accepted as arguments for any value.")
 
     def translate(self, x, y):
-        self.x += float(x)
-        self.y += float(y)
+        try:
+            self.x += float(x)
+            self.y += float(y)
+        except ValueError:
+            return self.error_message
     
     def is_inside(self, x, y, z=None):
         
@@ -48,11 +56,3 @@ class Geometry:
             return True if self.radius**2 >= self.inside_sphere_math(x,y,z) else False
     
     
-        """
-        Haha, hade vart kul om det nedanför funkade. Hittade en annan lösning, men också sen att Python själv
-        räknade ut att om > overload redan fanns overloadas < automatiskt.
-        
-    def __lt__(self, other):
-        return False if self.__gt__() else True
-        
-        """
