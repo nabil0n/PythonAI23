@@ -1,0 +1,47 @@
+uppgift 1:
+
+rad1: Skapar en lista som innehåller tre strängar till variabeln maträtter
+rad2: Skapar en ny variabel som sparar maträtten vid index 0, i detta fall "lasagne"
+rad3: skriver ut bokstaven vid index 3 från lasagne, alltså "a"
+
+Uppgift 2:
+
+def triangle_area(bas, höjd):
+    return 0.5 * bas * höjd
+
+while True:
+    try:
+        bas = int(input("Skriv in önskad bas: ")) >= 0
+        höjd = int(input("Skriv in önskad höjd: ")) >= 0
+        print(f"Arean för din införda data är {triangle_area(bas, höjd)}.")
+        break
+    
+    except ValueError:
+        print("ValueError: Var god för in endast positiva tal.")
+
+Uppgift 3:
+
+import random
+
+weathers = {"soligt": 0, "molnigt": 0, "regnigt": 0, "snöigt": 0, "stormigt": 0}
+
+for i in range(365):
+    weathers[random.choice(list(weathers.keys()))] += 1
+
+print(weathers)
+
+Uppgift 4:
+
+def xo(n):
+
+    count = 0
+
+    for y in range(n):
+        for x in range(n):
+            print("x ", end="") if x == count else print("o ", end="")
+        
+        count += 1
+
+        print()
+
+xo(5)
