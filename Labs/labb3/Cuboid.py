@@ -162,18 +162,23 @@ class Cuboid(Rectangle):
         """Corner calculator
 
         Returns:
-            ((tuple)float): adds z-position to the closer bottom left corner.
+            (tuple): adds z-position to the closer bottom left corner.
         """
         
-        return super().bot_left, self.z - self.depth / 2
+        temp_list = list(super().bot_left)
+        temp_list.append(self.z - self.depth / 2)
+        
+        return tuple(temp_list)
     
     @property
     def top_right_far(self):
         """Corner calculator
 
         Returns:
-            ((tuple)float): adds z-position to the further away top right corner.
+            (tuple): adds z-position to the further away top right corner.
         """
         
-        return super().top_right, self.z + self.depth / 2
-    
+        temp_list = list(super().top_right)
+        temp_list.append(self.z + self.depth / 2)
+        
+        return tuple(temp_list)

@@ -33,8 +33,8 @@ def test_circle_geometrics():
 def test_cuboid_geometrics():
     assert test_box.get_volume == 1
     assert test_box.is_cube == True
-    assert test_box.bot_left_close == ((0.5,0.5),0.5)
-    assert test_box.top_right_far == ((1.5,1.5),1.5)
+    assert test_box.bot_left_close == (0.5,0.5,0.5)
+    assert test_box.top_right_far == (1.5,1.5,1.5)
 
 def test_sphere_geometrics():
     assert test_sphere.get_volume == (4.0/3.0)*pi*1**3
