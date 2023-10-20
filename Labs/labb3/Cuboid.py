@@ -56,7 +56,7 @@ class Cuboid(Rectangle):
             float: z-coordinate
             float: width
             float: height
-            float: depth
+            float: depth, and sets it to the negative negative value if negative.
             str: Calls the error_message from parent-class if ValueError.
         """
         
@@ -65,7 +65,7 @@ class Cuboid(Rectangle):
         
         try:
             self.z = float(z)
-            self.depth = float(depth)
+            self.depth = float(depth) if depth > 0 else depth*-1
         except ValueError:
                 return self.error_message
     

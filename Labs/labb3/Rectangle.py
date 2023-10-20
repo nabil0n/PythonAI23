@@ -53,8 +53,8 @@ class Rectangle(Geometry):
             str: Name of type of instance ("Rectangle")
             float: x
             float: y
-            float: width
-            flaot: height
+            float: width, and sets it to the negative negative value if negative.
+            flaot: height, and sets it to the negative negative value if negative.
             str: Calls the error_message from parent-class if ValueError.
         """
         
@@ -62,8 +62,8 @@ class Rectangle(Geometry):
         self.type = "Rectangle"
         
         try:
-            self.width = float(width)
-            self.height = float(height)
+            self.width = float(width) if width > 0 else width*-1
+            self.height = float(height) if height > 0 else height*-1
         except ValueError:
             return self.error_message
         

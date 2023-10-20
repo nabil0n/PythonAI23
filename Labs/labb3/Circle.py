@@ -42,7 +42,7 @@ class Circle(Geometry):
         Args:
             x (float): x-coordinate (from parent-class)
             y (float): y-coordinate (from parent-class)
-            radius (float): The radius of the circle
+            radius (float): The radius of the circle, and sets it to the negative negative value if negative.
 
         Returns:
             str: Name of type of instance ("Circle")
@@ -52,7 +52,7 @@ class Circle(Geometry):
         self.type = "Circle"
         
         try:
-            self.radius = float(radius)
+            self.radius = float(radius) if radius > 0 else radius*-1
         except ValueError:
             return self.error_message
     
